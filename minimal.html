@@ -1,0 +1,572 @@
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learning</title>
+    <meta name="description" content="We've presented Clarity, a minimalist and elegant website template for AI research.">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
+    <meta content="en_EN" property="og:locale">
+    <meta content="website" property="og:type">
+    <meta content="https://shikun.io/projects/clarity" property="og:url">
+    <meta content="Clarity" property="og:title">
+    <meta content="Website Template for AI Research" property="og:description">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:description" content="Clarity: A Minimalist Website Template for AI Research">
+    <meta name="twitter:image:src" content="assets/figures/clarity.png">
+    
+    <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
+    <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <script src="assets/scripts/navbar.js"></script>  <!-- Comment to remove table of content. -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "HTML-CSS": {
+              scale: 95,
+              fonts: ["Gyre-Pagella"],
+              imageFont: null,
+              undefinedFamily: "'Arial Unicode MS', cmbright"
+            },
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+              }
+          });
+    </script>
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .proprietary { background-color: #edf7ff; }
+        .openmodel { background-color: #f2fff9; }
+        .qwen3b { background-color: #fff7d9; }
+        .qwen7b { background-color: #ffeef3; }
+        .step { background-color: #f3f6ee; }
+        .center th, .center td { text-align: center; }
+        .table-wrapper { overflow-x: auto; }
+
+    </style>
+</head>
+
+<body>
+    <!-- Title Page -->
+    <!-- Dark Theme Example: Change the background colour dark and change the following div "blog-title" into "blog-title white". -->
+    <!-- <div class="container blog" id="first-content" style="background-color: #E0E4E6;"> -->
+        <!-- If you don't have a project cover: Change "blog-title" into "blog-title no-cover"  -->
+        <!-- <div class="blog-title"> -->
+    <div class="container blog" id="first-content" style="background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);">
+        <div class="blog-title no-cover">
+            <div class="blog-intro">
+                <div>
+                    <h1 class="title">VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learning</h1>
+                    <p class="author">
+                        Li Kang <sup>1,2*</sup>, Xiufeng Song <sup>1,2*</sup>, Heng Zhou <sup>2,3*</sup>, Yiran Qin <sup>2,5&dagger;</sup>,<br> Jie Yang <sup>5</sup>, Zhenfei Yin<sup>4&dagger; </sup>, Xiaohong Liu <sup>1</sup>, Philip Torr <sup>4</sup> and Lei Bai <sup>2&dagger;</sup>
+                    </p>
+                    <p class="author" style="padding-top: 0px;">
+                        <sup>1</sup> Shanghai Jiao Tong University 
+                        <sup>2</sup> Shanghai Artificial Intelligence Laboratory <br>
+                        <sup>3</sup> University of Science and Technology of China
+                        <sup>4</sup> University of Oxford <br>
+                        <sup>5</sup> The Chinese University of Hong Kong, Shenzhen <br>
+                        <sup>*</sup> Equal contribution <sup>&dagger;</sup> Corresponding author
+  
+                    </p>
+                    <p class="abstract" style="text-align: justify;">
+                        <!-- Coordinating multiple embodied agents in dynamic environments remains a core
+                        challenge in artificial intelligence, requiring both perception-driven reasoning
+                        and scalable cooperation strategies. While recent works have leveraged large
+                        language models (LLMs) for multi-agent planning, a few have begun to explore
+                        vision-language models (VLMs) for visual reasoning. However, these VLM-based
+                        approaches remain limited in their support for diverse embodiment types.-->
+                        In this work, we introduce VIKI-Bench, the first hierarchical benchmark tailored for
+                        embodied multi-agent cooperation, featuring three structured levels: agent activation, task planning, and trajectory perception. VIKI-Bench includes diverse robot
+                        embodiments, multi-view visual observations, and structured supervision signals to
+                        evaluate reasoning grounded in visual inputs. To demonstrate the utility of VIKI-Bench, we propose VIKI-R, a two-stage framework that fine-tunes VLMs using Chain-of-Thought annotated demonstrations,
+                        followed by reinforcement learning under multi-level reward signals. Our extensive
+                        experiments show that VIKI-R significantly outperforms baselines method across
+                        all task levels. Furthermore, we show that reinforcement learning enables the
+                        emergence of compositional cooperation patterns among heterogeneous agents. To-
+                        gether, VIKI-Bench and VIKI-R offer a unified testbed and method for advancing
+                        multi-agent, visual-driven cooperation in embodied AI systems.
+                    </p>
+                    <br>
+                    <!-- Using FontAwesome Pro -->
+                    <!-- <div class="info">
+                        <div>
+                            <a href="https://arxiv.org" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)"> Paper <i class="far fa-book-open"></i></a> &nbsp;&nbsp; 
+                            <a href="https://github.com" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Code <i class="far fa-code"></i></a>  &nbsp;&nbsp; 
+                            <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon" style="background-color: rgba(255, 255, 255, 0.3);">Slides <i class="far fa-presentation"></i></a>  &nbsp;&nbsp; 
+                            <a href="https://huggingface.co/spaces" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Demo <i class="fa-light fa-face-smiling-hands"></i></a>
+                        </div>
+                    </div> -->
+
+                    <!-- Using FontAwesome Free -->
+                    <div class="info">
+                        <div>
+                            <a href="https://arxiv.org" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)"> Paper <i class="fa-solid fa-book-open"></i></a> &nbsp;&nbsp; 
+                            <a href="https://github.com" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Code <i class="fa-solid fa-code"></i></a>  &nbsp;&nbsp; 
+                            <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon" style="background-color: rgba(255, 255, 255, 0.2);">Slides <i class="fa-regular fa-file-powerpoint"></i></a> &nbsp;&nbsp; 
+                            <a href="https://huggingface.co/spaces/" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Demo <i class="fa-solid fa-laptop-code"></i></a> 
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- <div class="info">
+                    <p>CVPR 2048 / Best Paper Award</p>
+                </div> -->
+            </div>
+
+            <!-- <div class="blog-cover">
+                <img class="foreground" src="assets/figures/clarity.png">
+                <img class="background" src="assets/figures/clarity.png">
+            </div> -->
+        </div>
+    </div>
+
+
+    <div class="container blog main first" id="blog-main" style="text-align: justify;">
+        <h1 >
+            Introduction
+        </h1>
+        <p class='text'>
+            In the sci-fi film <a href="https://en.wikipedia.org/wiki/I,_Robot_(film)" target="_blank"><em>I, Robot</em></a>, the supercomputer <strong>VIKI</strong> coordinates thousands of humanoid robots with remarkable precision—
+            offering a glimpse into the potential of <strong>heterogeneous multi-agent systems</strong>. While fictional, this vision underscores a real and pressing challenge in artificial intelligence:<br>      
+        <blockquote class="blockquote">
+            <!-- How can we enable multiple embodied agents to collaborate effectively? -->
+            What will it take for embodied agents to work together like a team?
+        </blockquote>
+        </p>
+        <p class='text'>
+            As shown in the figure below, tackling this problem is key to building <strong>scalable, cooperative AI systems</strong> capable of <strong>leveraging specialized embodiments</strong>—some tasks require unique robot capabilities: reaching high places, handling fragile objects, or navigating tight spaces—and <strong>achieving efficient cooperation</strong>—multi-agent collaboration can drastically improve performance through parallel execution and mutual support.
+        </p>        
+        <!-- <p class='text'>
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Urna non ligula sed ante ultricies. Nam nam tortor elit turpis fermentum praesent. Tristique porttitor sodales rhoncus duis tellus mus vivamus lacus. Nam platea lectus aliquam placerat; quis dignissim nisi ornare. Habitant himenaeos adipiscing dictum fringilla metus.
+        </p>
+
+        <p class="text">
+            Sagittis donec nibh etiam leo eget iaculis proin. Dapibus morbi vitae ad vestibulum montes odio varius. Ullamcorper finibus nibh suscipit libero velit suspendisse. Potenti potenti risus integer libero semper potenti vivamus. Libero cras lectus netus faucibus nisl. Congue aliquet congue ante netus eu, vestibulum arcu. Scelerisque tempor taciti senectus mus penatibus condimentum consequat in. Tempor conubia molestie tristique; orci taciti augue. Justo ultrices consequat hac vivamus proin sodales.
+        </p> -->
+    </div>
+    <div class="container blog large gray-linear">
+        <img src="images/motivation.png" alt="Motivation" class="img-popup" onclick="openPopup(this.src)">
+        <p class="caption" style="text-align: justify;">
+            Embodied multi-agent cooperation involves two key aspects: cross-embodiment collaboration and efficient coordination.
+            <br>(1) <b>Cross-Embodiment Collaboration</b>, where different embodiments are required for different tasks (e.g., washing requires a humanoid, while only wheeled robots can fetch from high cabinets).
+            <br>(2) <b>Efficient Coordination</b>, where agents work in parallel (e.g., arms passing apple while a humanoid washes them) to improve overall efficiency.
+            <!-- <br>To support such fine-grained teamwork, we propose <b>VIKI-Bench</b>, which structures the cooperation into three levels of visual reasoning:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;Level 1 – <b>Agent Activation</b>, selecting suitable robots from visual context;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;Level 2 – <b>Task Planning</b>, building structured multi-agent action plans;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;Level 3 – <b>Trajectory Perception</b>, tracking fine-grained motions from egocentric views. -->
+        </p>
+    </div>
+
+    <style>
+    .img-popup {
+        cursor: zoom-in;
+        transition: 0.3s;
+        max-width: 100%;
+    }
+    
+    /* 全屏遮罩背景 */
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .popup-overlay img {
+        max-width: 90vw;
+        max-height: 90vh;
+        box-shadow: 0 0 20px white;
+        border-radius: 10px;
+    }
+    </style>
+
+    <div class="container blog main" id="blog-main" style="text-align: justify;">
+    <h1 >
+        VIKI-Bench
+    </h1>
+    <p class='text'>
+        VIKI-Bench is a hierarchical benchmark designed to evaluate visual reasoning in embodied multi-agent collaboration. Inspired by real-world tasks requiring coordinated intelligence, it challenges agents to perceive, plan, and act jointly in diverse environments. The benchmark introduces a unified setting for studying high-level coordination and low-level motion prediction among heterogeneous robot teams.
+        <br> <br>Spanning over 20,000 task samples across 100 richly annotated scenes, VIKI-Bench is built upon <a href="https://robocasa.ai/" target="_blank"><em>RoboCasa</em><a> and the <a href="https://www.maniskill.ai/ManiSkill3" target="_blank"><em>ManiSkill3</em><a> platform. It features six types of heterogeneous robots—including humanoids, quadrupeds, and wheeled manipulators—interacting with diverse object configurations and spatial layouts. Each task is grounded in a natural language instruction and accompanied by global or egocentric visual observations, enabling fine-grained analysis of perception-driven collaboration.
+    </p>
+    </div>
+    <div class="container blog large gray-linear">
+    <img src="images/dataset_v5_00.png" alt="Dataset" class="img-popup" onclick="openPopup(this.src)">
+    <p class="caption" style="text-align: justify;">
+        VIKI-Bench is a <b>hierarchical</b> benchmark for evaluation on multi-agent embodied cooperation, featuring visual reasoning tasks in three levels.
+        <br>(1) <b>Agent Activation</b>, where robots are selected based on the scene image and the task context.
+        <br>(2) <b>Task Planning</b>, where a structured multi-agent action plan is generated, verified, and refined.
+        <br>(3) <b>Trajectory Perception</b>, where the fine-grained motion trajectory of each agent is tracked from egocentric views.
+        <br>The benchmark involves diverse robot types and complex 3D environments, with multiple metrics for quantitative evaluation.
+    </p>
+    </div>
+    
+    <!-- 放大弹窗容器 -->
+    <div id="popup" class="popup-overlay" onclick="closePopup()">
+    <img id="popup-img" src="" alt="Zoomed">
+    </div>
+    
+    <script>
+    function openPopup(src) {
+        document.getElementById("popup-img").src = src;
+        document.getElementById("popup").style.display = "flex";
+    }
+    
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+    </script>
+      
+    <div class="container blog main" style="text-align: justify;">
+        <h1>VIKI-R</h1>
+        <p class="text">
+            VIKI-R is a two-stage fine-tuning framework designed to equip vision–language models (VLMs) with robust visual reasoning capabilities for multi-agent collaboration. The first stage is a warmup phase based on supervised fine-tuning (SFT), where the model learns from high-quality Chain-of-Thought (CoT) annotations, enabling it to capture domain-specific reasoning patterns by optimizing both intermediate steps and final decisions. In the second stage, reinforcement fine-tuning further refines the model using the Grouped Relative Proximal Optimization (GRPO) algorithm. Here, the model explores multiple answer candidates and is guided by a reward function that evaluates both correctness and format, with policy updates performed under a KL-regularized objective for stable learning. Together, these two phases enable VIKI-R to achieve advanced perception-driven planning and compositional reasoning in complex, visual multi-agent tasks.
+        </p>
+    </div>
+    <div class="container blog large gray-linear">
+        <img src="images/viki-r_v7_00.png" alt="Dataset" class="img-popup" onclick="openPopup(this.src)">
+        <p class="caption" style="text-align: justify;">
+            Framework of VIKI-R. We adopted supervised fine-tuning (SFT) and reinforcement fine-tuning on the VIKI dataset, incorporating format and accuracy rewards to optimize the policy model. We design different accuracy rewards tailored to each level of the benchmark.
+        </p>
+    </div>
+    <div class="container blog main">
+        <h1>Results</h1>
+        <p class="text" style="text-align: justify;">
+            Our experiments reveal three key findings. First, closed-source models outperform open-source ones in zero-shot settings, with GPT-4o excelling at trajectory perception and Gemini-2.5-Flash-preview achieving the best agent activation accuracy. Second, <b>model scale</b> is crucial for open-source VLMs: Qwen2.5-VL (72B) matches or exceeds some closed models, while downsizing to 32B significantly harms planning and trajectory performance. Third, our two-stage fine-tuning framework VIKI-R surpasses supervised baselines like Ans-SFT and VIKI-R-zero, especially in <b>out-of-domain generalization</b>, highlighting the value of reinforcement learning for multi-agent visual reasoning.
+        </p>
+    </div>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            /* font-family: Arial, sans-serif; */
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        
+        thead {
+            background-color: #fffbef;
+        }
+        caption {
+            caption-side: top;
+            padding: 8px;
+        }
+
+        /* tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        } */
+        .note-row td {
+            text-align: center;
+            background-color: #ffffff;
+            border: none;
+        }
+    </style>
+    <div class="container blog extra-large ">
+        <table>
+            <!-- <caption>Performance comparison across the three hierarchical task levels of VIKI-Bench</caption> -->
+            
+            <thead class="center">
+                <tr class="note-row">
+                    <td colspan="10">
+                        <b>ACC_ID</b>: Accuracy on in-domain test set. &nbsp&nbsp&nbsp<b>ACC_OOD</b>: Accuracy on out-of-domain test set. &nbsp&nbsp&nbsp<b>Bold</b>: best. &nbsp&nbsp&nbsp<u>Underline</u>: second best.
+                    </td>
+                </tr>
+              <tr>
+                <th rowspan="2">Category</th>
+                <th rowspan="2">Method</th>
+                <th colspan="1">VIKI-L1</th>
+                <th colspan="3">VIKI-L2</th>
+                <th colspan="4">VIKI-L3</th>
+              </tr>
+              <tr>
+                <th>ACC_ID ↑</th>
+                <th>ACC_ID ↑</th>
+                <th>ACC_OOD ↑</th>
+                <th>ACC_AVG ↑</th>
+                <th>RMSE ↓</th>
+                <th>HD ↓</th>
+                <th>DFD ↓</th>
+                <th>AVG ↓</th>
+              </tr>
+            </thead>
+            <tbody class="center">
+            <!-- Closed-Source Models -->
+            <tr class="proprietary">
+                <td rowspan="3"><strong>Closed-Source</strong></td>
+                <td>GPT-4o</td>
+                <td>18.40</td><td>22.56</td><td>10.02</td><td>17.50</td>
+                <td>100.80</td><td>115.34</td><td>131.05</td><td>115.73</td>
+            </tr>
+            <tr class="proprietary">
+                <td>Claude-3.7-Sonnet</td>
+                <td>12.40</td><td>19.44</td><td>0.57</td><td>11.82</td>
+                <td>283.31</td><td>323.53</td><td>346.88</td><td>317.91</td>
+            </tr>
+            <tr class="proprietary">
+                <td>Gemini-2.5-Flash-preview</td>
+                <td>31.40</td><td>20.00</td><td>10.51</td><td>16.17</td>
+                <td>453.89</td><td>519.14</td><td>540.80</td><td>504.61</td>
+            </tr>
+        
+            <!-- Open-Source Models -->
+            <tr class="openmodel">
+                <td rowspan="3"><strong>Open-Source</strong></td>
+                <td>Qwen2.5-VL-72B-Instruct</td>
+                <td>11.31</td><td>8.40</td><td>1.20</td><td>5.49</td>
+                <td>81.31</td><td>94.62</td><td>113.15</td><td>96.36</td>
+            </tr>
+            <tr class="openmodel">
+                <td>Qwen2.5-VL-32B-Instruct</td>
+                <td>9.50</td><td>3.60</td><td>0.00</td><td>2.15</td>
+                <td>88.48</td><td>99.80</td><td>119.78</td><td>102.69</td>
+            </tr>
+            <tr class="openmodel">
+                <td>Llama-3.2-11B-Vision</td>
+                <td>0.40</td><td>0.50</td><td>0.00</td><td>0.30</td>
+                <td>192.69</td><td>223.57</td><td>231.85</td><td>216.04</td>
+            </tr>
+        
+            <!-- Qwen2.5VL-3B -->
+            <tr class="qwen3b">
+                <td rowspan="4"><strong>Qwen2.5VL-3B</strong></td>
+                <td>Zero-Shot</td>
+                <td>1.95</td><td>0.22</td><td>0.00</td><td>0.13</td>
+                <td>96.22</td><td>114.93</td><td>130.98</td><td>114.04</td>
+            </tr>
+            <tr class="qwen3b">
+                <td>+Ans SFT</td>
+                <td>35.29</td><td>81.06</td><td>30.71</td><td>60.74</td>
+                <td>74.70</td><td>90.28</td><td>102.26</td><td>89.08</td>
+            </tr>
+            <tr class="qwen3b">
+                <td>+VIKI-R-Zero</td>
+                <td>20.40</td><td>0.00</td><td>0.00</td><td>0.00</td>
+                <td>80.36</td><td>95.36</td><td>120.27</td><td>98.66</td>
+            </tr>
+            <tr class="qwen3b">
+                <td>+VIKI-R</td>
+                <td>74.10</td><td>93.61</td><td><u>32.11</u></td><td>68.78</td>
+                <td>75.69</td><td>90.25</td><td>103.65</td><td>89.86</td>
+            </tr>
+        
+            <!-- Qwen2.5VL-7B -->
+            <tr class="qwen7b">
+                <td rowspan="4"><strong>Qwen2.5VL-7B</strong></td>
+                <td>Zero-Shot</td>
+                <td>4.26</td><td>0.44</td><td>0.00</td><td>0.26</td>
+                <td>81.93</td><td>103.82</td><td>112.91</td><td>99.55</td>
+            </tr>
+            <tr class="qwen7b">
+                <td>+Ans SFT</td>
+                <td>72.20</td><td><b>96.89</b></td><td>25.62</td><td><u>68.13</u></td>
+                <td><u>65.32</u></td><td><u>81.20</u></td><td><u>90.89</u></td><td><u>79.14</u></td>
+            </tr>
+            <tr class="qwen7b">
+                <td>+VIKI-R-Zero</td>
+                <td><b>93.59</b></td><td>0.17</td><td>0.00</td><td>0.10</td>
+                <td>67.42</td><td>85.30</td><td>95.32</td><td>82.68</td>
+            </tr>
+            <tr class="qwen7b">
+                <td>+VIKI-R</td>
+                <td><u>93.00</u></td><td><u>95.22</u></td><td><b>33.25</b></td><td><b>69.25</b></td>
+                <td><b>64.87</b></td><td><b>79.23</b></td><td><b>89.36</b></td><td><b>77.82</b></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>          
+
+    <div class="container blog extra-large gray">
+        <div class="slide-menu">
+            <ul class="dots" id="slide-menu">
+                <li class="dot active"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+            </ul>
+        </div>
+       
+        <div class="slide-content", style="display: block;">
+            <div class="columns-3">
+                <img src="images/demo4.png">
+                <img src="images/demo1.png">
+                <img src="images/40.png">
+                <!-- <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
+                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
+                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg"> -->
+            </div>
+            <p class="caption">
+                Demonstration of the VIKI-Bench dataset. VIKI-Bench showcases diverse tasks involving multiple robot morphologies, coordinated collaboration, and complex visual reasoning, with both global and egocentric observation modes in 100 scenes. 
+            </p>
+        </div>
+
+        <div class="slide-content", style="display: none;">
+            <div class="columns-3">
+                <img src="images/demo2.png">
+                <img src="images/demo3.png">
+                <img src="images/60.png">
+                <!-- <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
+                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
+                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg"> -->
+            </div>
+            <p class="caption">
+                Demonstration of the VIKI-Bench dataset. VIKI-Bench showcases diverse tasks involving multiple robot morphologies, coordinated collaboration, and complex visual reasoning, with both global and egocentric observation modes in 100 scenes. 
+            </p>
+        </div>
+
+        <div class="slide-content", style="display: none;">
+            <div class="columns-8">
+                <img src="images/45_1.png">
+                <img src="images/128_2.png">
+                <img src="images/9_1.png">
+                <img src="images/1038_1.png">
+                <img src="images/422_1.png">
+                <img src="images/532_2.png">
+                <img src="images/784_1.png">
+                <img src="images/913_1.png">
+            </div>
+            <p class="caption">
+                Demonstration of the VIKI-Bench dataset. VIKI-Bench showcases diverse tasks involving multiple robot morphologies, coordinated collaboration, and complex visual reasoning, with both global and egocentric observation modes in 100 scenes. 
+            </p>
+        </div>
+    </div>
+
+    <div class="container blog main">
+        <h1>Additional Analysis</h1>
+        <h2>Observation 1</h2>
+        <p class="text" style="text-align: justify;">
+            We conduct an ablation study on reasoning tasks from the VIKI-L2 level to evaluate the impact of incorporating a <b>step penalty</b> during training. This penalty is applied when the predicted plan deviates in length from the ground-truth plan—i.e., when the agent takes too many steps compared to the optimal plan, it receives no reward. The goal is to encourage precise and efficient planning behavior.
+        </p>
+        <ol>
+            <li>
+                <p class="text" style="text-align: justify;">
+                    <b>Improved Generalization:</b> With the step penalty, VIKI-R achieves <b>46.8%</b> accuracy on out-of-domain (OOD-H) tasks, compared to only <b>7.1%</b> without it. This shows that penalizing suboptimal plans significantly improves the model's ability to generalize to unseen scenarios.
+                </p>
+            </li>
+            <li>
+                <p class="text" style="text-align: justify;">
+                    <b>Better Planning Efficiency:</b> The average difference in plan length (<i>Δ Steps</i>) drops from <b>1.97</b> to <b>0.05</b>, indicating that the model generates action sequences that are nearly identical to the ground truth. Meanwhile, in-domain accuracy improves from <b>8.0%</b> to <b>96.0%</b>, demonstrating that the step penalty also enhances planning precision in familiar environments.
+                </p>
+            </li>
+        </ol>
+        <table>
+            <thead class="center">
+                <tr class="note-row">
+                <td colspan="4">
+                    <b>ACC_ID</b>: Accuracy on in-domain tasks. &nbsp;&nbsp;&nbsp;
+                    <b>ACC_OOD</b>: Accuracy on out-of-domain tasks. &nbsp;&nbsp;&nbsp; <br>
+                    <b>Δ Steps</b>: Difference between predicted and ground-truth plan length. &nbsp;&nbsp;&nbsp;
+                    <!-- <b>Bold</b>: best. -->
+                </td>
+                </tr>
+                <tr>
+                <th>Variant</th>
+                <th>ACC_OOD ↑</th>
+                <th>ACC_ID ↑</th>
+                <th>Δ Steps ↓</th>
+                </tr>
+            </thead>
+            <tbody class="center">
+                <tr class="step">
+                    <td><strong>VIKI-R (with step penalty)</strong></td>
+                    <td><b>46.8</b></td>
+                    <td><b>96.0</b></td>
+                    <td><b>+0.05</b></td>
+                </tr>
+                <tr class="step">
+                    <td>VIKI-R (without step penalty)</td>
+                    <td>7.1</td>
+                    <td>8.0</td>
+                    <td>+1.97</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+            <!-- Left: Text content -->
+            <div style="flex: 1;">
+              <h2>Observation 2</h2>
+              <p class="text" style="text-align: justify;">
+                The curve in the right illustrates a dip during early format optimization, followed by a rise as task reasoning emerges. In the early stages of training, output length decreases as the model prioritizes format compliance to secure the <b>format reward</b>. At this point, the model learns to produce syntactically correct responses with minimal reasoning content. Once format accuracy saturates, the policy gradually shifts focus toward maximizing <b>task correctness</b>. This leads to a steady increase in output length, as the model begins to include more detailed reasoning steps necessary to solve the tasks accurately.
+              </p>
+            </div>
+          
+            <!-- Right: Figure -->
+            <div style="flex: 1; max-width: 50%;">
+              <br>
+              <img src="images/response_v3_00.png" alt="Output Length vs. Training Progress" style="width: 100%; border-radius: 8px;" />
+              <p class="text" style="font-size: 0.9em; text-align: center; margin-top: 8px;">
+                <i>Figure: Output length dynamics across training.</i>
+              </p>
+            </div>
+        </div>  
+        <!-- <h2>Observation 2</h2>
+        <p class="text">
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos sociosqu facilisi ante; cubilia sociosqu magna libero. Dignissim vehicula felis taciti sollicitudin quam ligula a, vivamus porta. Tellus facilisi pharetra non posuere a sapien. Sagittis felis lectus ac interdum pretium sit himenaeos.
+        </p>
+
+        <ul >
+            <li>
+                <p class="text">Conubia aliquet semper inceptos ultricies vel metus fusce litora. </p>
+            </li>
+            <li>
+                <p class="text">Ultricies dis vehicula non lobortis hac sagittis urna dignissim ex. 
+                </p>
+            </li>
+        </ul> -->
+    </div>
+
+
+    <!-- <div class="container blog main">
+        <h1>Conclusion</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod sociosqu.
+        </p>
+    </div> -->
+
+    <div class="container blog main">
+        <h1>Citation</h1>
+        <p class="text">
+            If you find this project useful, welcome to cite us.
+        </p>
+<pre><code class="plaintext">@article{li2025vikir,
+    title={VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learning},
+    author={},
+    journal={},
+    year={2025}
+}</code></pre>
+    </div>
+
+    <!-- Footer Page -->
+    <footer>
+        <div class="container">
+            <p>
+                This website is built on the <a href="https://shikun.io/projects/clarity">Clarity Template</a>, designed by <a href="https://shikun.io/">Shikun Liu</a>.
+            </p>
+        </div>    
+    </footer>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="clarity/clarity.js"></script>    
+    <script src="assets/scripts/main.js"></script>    
+    </html>
+</body>
