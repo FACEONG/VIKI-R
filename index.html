@@ -51,6 +51,15 @@
         .step { background-color: #f3f6ee; }
         .center th, .center td { text-align: center; }
         .table-wrapper { overflow-x: auto; }
+        /* Release date: a quieter line under the venue. */
+        div.container.blog#first-content div.blog-title .blog-intro .info p.release-date {
+            padding: 2px 0 0;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            font-size: 80%;
+            color: #6f6a72;
+        }
 
     </style>
 </head>
@@ -68,6 +77,9 @@
                     <h1 class="title">VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learning</h1>
                     <div class="info">
                         <p>NeurIPS 2025</p>
+                    </div>
+                    <div class="info">
+                        <p class="release-date"><time datetime="2025-06-09">June 9, 2025</time></p>
                     </div>
                     <p class="author">
                         Li Kang <sup>1,2*</sup>, Xiufeng Song <sup>1,2*</sup>, Heng Zhou <sup>2,3*</sup>, Yiran Qin <sup>2,5&dagger;</sup>,<br> Jie Yang <sup>5</sup>, Xiaohong Liu <sup>1</sup>, Philip Torr <sup>4</sup>, Lei Bai <sup>2&dagger;</sup>, Zhenfei Yin<sup>4&dagger;</sup>
